@@ -65,5 +65,8 @@ calculator/
 - Implementing operator precedence without `eval()`
 - Theming with CSS variables and saving preferences with `localStorage`
 
+## Screenshots
+Background: ![Calculator screenshot](img/operations.jpg)
+
 **VERONICA FADY**
 [GitHub](https://github.com/veronicafady22-stack)
