@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ألوان الوضع الداكن (الافتراضي) */
+:root {
+  --bg: #1e1e2f;
+  --calc-bg: #2b2b40;
+  --display-bg: #1a1a28;
+  --text: #ffffff;
+  --muted: #9a9ab0;
+  --btn: #3d3d5c;
+  --btn-text: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* ألوان الوضع الفاتح */
+[data-theme="light"] {
+  --bg: #e8ebf2;
+  --calc-bg: #f6f7fb;
+  --display-bg: #ffffff;
+  --text: #1e1e2f;
+  --muted: #6b6b80;
+  --btn: #dfe2ec;
+  --btn-text: #1e1e2f;
+  --shadow: rgba(0, 0, 0, 0.15);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg) url("img/operations.jpg") center / cover no-repeat fixed;
+  font-family: Arial, sans-serif;
+  transition: background 0.2s;
+}
+
+.calculator {
+  width: 320px;
+  padding: 20px;
+  background:color-mix(in srgb, var(--calc-bg) 85% , transparent ) ;
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: background 0.2s;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.title {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--btn);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.display {
+  min-height: 100px;
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  background: var(--display-bg);
+  color: var(--text);
+  border-radius: 10px;
+  text-align: right;
+  word-break: break-all;
+  transition: background 0.2s;
+}
+
+.expression {
+  min-height: 1.4rem;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.current {
+  font-size: 2.2rem;
+}
+
+/* CSS Grid: 4 أعمدة متساوية */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn {
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  background: var(--btn);
+  color: var(--btn-text);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.btn:hover { filter: brightness(1.15); }
+.btn:active { transform: scale(0.96); }
+
+.btn:focus-visible,
+.theme-toggle:focus-visible {
+  outline: 2px solid #ff9f43;
+  outline-offset: 2px;
+}
+
+.operator { background: #ff9f43; color: #fff; }
+.clear    { background: #ee5253; color: #fff; }
+.equals   { background: #10ac84; color: #fff; }
