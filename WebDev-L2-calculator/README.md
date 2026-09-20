@@ -67,6 +67,8 @@ calculator/
 
 ## Screenshots
 Background: ![Calculator screenshot](img/operations.jpg)
+Light Mode: ![Calculator screenshot](img/Light_Mode.jpg)
+BLack Mode: ![Calculator screenshot](img/Black_Mode.png)
 
 **VERONICA FADY**
 [GitHub](https://github.com/veronicafady22-stack)
