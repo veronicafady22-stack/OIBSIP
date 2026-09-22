@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sir Magdi Yacoub · A Tribute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal-950: #0d2626;
+    --teal-900: #123434;
+    --teal-800: #1a4646;
+    --teal-line: rgba(243,237,224,0.18);
+    --parchment: #f2ecdf;
+    --parchment-2: #eae2cf;
+    --ink: #22201a;
+    --ink-soft: #4a453a;
+    --crimson: #7e2430;
+    --crimson-dark: #5e1a23;
+    --gold: #b6903a;
+    --cream: #f5f0e3;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+  h1, h2, h3, .display {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    margin: 0;
+    color: inherit;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-left: clamp(20px, 5vw, 64px);
+    padding-right: clamp(20px, 5vw, 64px);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background:
+      radial-gradient(ellipse at 78% 15%, rgba(182,144,58,0.16), transparent 55%),
+      linear-gradient(180deg, var(--teal-950) 0%, var(--teal-900) 100%);
+    color: var(--cream);
+    padding: clamp(56px, 9vw, 96px) 0 clamp(48px, 8vw, 84px);
+    overflow-x: clip;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(32px, 6vw, 64px);
+    align-items: center;
+  }
+  .kicker {
+    font-size: 0.95rem;
+    color: #d7c187;
+    letter-spacing: 0.02em;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    line-height: 1.03;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: #e7d7a6;
+  }
+  .tagline {
+    margin-top: 22px;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    max-width: 34ch;
+    color: #cfd8d4;
+    font-weight: 400;
+  }
+  .hero-meta {
+    margin-top: 34px;
+    display: flex;
+    gap: clamp(20px, 4vw, 40px);
+    flex-wrap: wrap;
+    border-top: 1px solid var(--teal-line);
+    padding-top: 22px;
+  }
+  .hero-meta div span {
+    display: block;
+  }
+  .hero-meta .num {
+    font-family: "Fraunces", serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+  }
+  .hero-meta .lbl {
+    font-size: 0.85rem;
+    color: #a9b6b2;
+    margin-top: 2px;
+  }
+  .portrait-frame {
+    position: relative;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid rgba(182,144,58,0.5);
+  }
+  .portrait-frame img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .portrait-cred {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #8fa09b;
+    margin-top: 14px;
+  }
+  .portrait-cred a { color: #b7c4bf; }
+
+  /* ---------- BIO ---------- */
+  .bio {
+    background: var(--parchment);
+    padding: clamp(56px, 9vw, 100px) 0;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 34px;
+  }
+  .section-head .idx {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    color: var(--crimson);
+    font-size: 1.1rem;
+  }
+  .section-head h2 {
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+  }
+  .bio-body {
+    max-width: 680px;
+  }
+  .bio-body p {
+    margin: 0 0 20px;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+  .bio-body p:first-of-type::first-letter {
+    font-family: "Fraunces", serif;
+    font-size: 3.6em;
+    float: left;
+    line-height: 0.85;
+    padding-right: 10px;
+    padding-top: 4px;
+    color: var(--crimson);
+    font-weight: 500;
+  }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline-section {
+    background: var(--teal-900);
+    color: var(--cream);
+    padding: clamp(56px, 9vw, 100px) 0;
+  }
+  .timeline-section .section-head h2 { color: var(--cream); }
+  .timeline-section .section-head .idx { color: var(--gold); }
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    padding-left: 28px;
+    border-left: 1px solid var(--teal-line);
+  }
+  .t-item {
+    position: relative;
+    padding: 0 0 40px 30px;
+  }
+  .t-item:last-child { padding-bottom: 0; }
+  .t-item::before {
+    content: "";
+    position: absolute;
+    left: -35px;
+    top: 4px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 4px rgba(182,144,58,0.18);
+  }
+  .t-year {
+    font-family: "Fraunces", serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .t-item h3 {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .t-item p {
+    margin: 0;
+    color: #c3d0cc;
+    font-size: 0.98rem;
+    max-width: 56ch;
+  }
+
+  /* ---------- QUOTE ---------- */
+  .quote-band {
+    background: linear-gradient(160deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+    color: var(--cream);
+    padding: clamp(64px, 10vw, 110px) 0;
+    text-align: center;
+  }
+  .quote-band blockquote {
+    margin: 0 auto;
+    max-width: 760px;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    line-height: 1.35;
+  }
+  .quote-band blockquote::before { content: "“"; }
+  .quote-band blockquote::after { content: "”"; }
+  .quote-band cite {
+    display: block;
+    font-style: normal;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.95rem;
+    color: #f0cdd2;
+    margin-top: 24px;
+  }
+
+  /* ---------- HONORS ---------- */
+  .honors {
+    background: var(--parchment-2);
+    padding: clamp(56px, 9vw, 100px) 0;
+  }
+  .honors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 8px;
+  }
+  .honor-card {
+    background: var(--cream);
+    border: 1px solid #ddd2b5;
+    padding: 26px 24px;
+  }
+  .honor-card .num {
+    font-family: "Fraunces", serif;
+    font-size: 2rem;
+    color: var(--crimson);
+    margin-bottom: 10px;
+  }
+  .honor-card p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .closing {
+    max-width: 680px;
+    margin-top: 56px;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+  .closing strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--teal-950);
+    color: #8fa09b;
+    padding: 34px 0;
+    font-size: 0.82rem;
+  }
+  footer a { color: #c3d0cc; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: left; }
+    .portrait-frame { max-width: 260px; margin: 0; order: -1; }
+    .honors-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">A tribute · b. 1935</div>
+      <h1>Sir Magdi<br><em>Yacoub</em></h1>
+      <p class="tagline">The surgeon who taught a generation of failing hearts how to keep going.</p>
+      <div class="hero-meta">
+        <div><span class="num">2,500+</span><span class="lbl">transplants performed</span></div>
+        <div><span class="num">65</span><span class="lbl">years in medicine</span></div>
+        <div><span class="num">1992 / 2014</span><span class="lbl">knighthood &amp; Order of Merit</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="portrait-frame">
+        <img src="./img/4-Sir-Magdi-Yacoub.jpg" alt="Sir Magdi Yacoub.">
+      </div
+  </div>
+</header>
+
+<section class="bio">
+  <div class="wrap">
+    <div class="section-head"><span class="idx">01</span><h2>A life spent inside the heart</h2></div>
+    <div class="bio-body">
+      <p>Magdi Habib Yacoub was born in 1935 in the small Egyptian town of Bilbeis, into a Coptic Christian family that moved between towns for his father's work as a surgeon. Medicine ran in the household, but it was loss, not tradition, that pointed Magdi toward the heart specifically: an aunt in her early twenties died from a valve condition that, in a better-equipped hospital, could have been treated. That single, preventable death became the quiet engine behind almost seventy years of work.</p>
+      <p>He entered Cairo University's medical school at fifteen on a scholarship and qualified as a doctor in 1957. Within a few years he had left for Britain, joining a fellowship in London and later working alongside surgeon Donald Ross, with whom he helped refine a technique for replacing a damaged heart valve with the patient's own pulmonary valve. A stint at the University of Chicago followed, but Yacoub had already promised Harefield Hospital, west of London, that he would return — and in 1973 he did, as a consultant cardiothoracic surgeon.</p>
+      <p>Harefield is where his name became inseparable from heart transplantation in Britain. He began the hospital's transplant programme in 1980, and by December 1983 had carried out the country's first combined heart-and-lung transplant. Under his direction, Harefield grew into the busiest heart and lung transplant centre in the world, and two of his earliest patients went on to live for decades — one of them recognised by Guinness World Records as the longest-surviving heart transplant patient on record.</p>
+      <p>Retirement from the National Health Service in 2001 barely slowed him down. He kept operating through the charity he founded, Chain of Hope, carrying free surgery to children in countries with little access to cardiac care, and later returned to Egypt to help build the Aswan Heart Centre. Well into his eighties and nineties, he was still publishing research on growing heart valves from stem cells — proof that his curiosity about the organ never really stopped at the operating table.</p>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <div class="wrap">
+    <div class="section-head"><span class="idx">02</span><h2>Milestones of a career</h2></div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-year">1957</div>
+        <h3>Qualifies in Cairo</h3>
+        <p>Graduates from Cairo University's medical school after entering on scholarship at just fifteen years old.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">1961–1973</div>
+        <h3>Training in Britain and the US</h3>
+        <p>Trains in London under Sir Russell Brock, works with Donald Ross on early valve-repair techniques, then spends time as an assistant professor at the University of Chicago before returning to Britain for good.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">1980</div>
+        <h3>Begins the Harefield transplant programme</h3>
+        <p>Performs the hospital's first heart transplant; the patient goes on to live a further twenty-five years.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">1983</div>
+        <h3>Britain's first heart-and-lung transplant</h3>
+        <p>Carries out the country's first combined heart-and-lung transplant at Harefield Hospital.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">1992</div>
+        <h3>Knighted</h3>
+        <p>Receives a knighthood for his services to medicine and surgery.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">1995</div>
+        <h3>Founds Chain of Hope</h3>
+        <p>Establishes the charity that funds heart surgery for children in developing and war-affected countries.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2008–2009</div>
+        <h3>Aswan Heart Centre</h3>
+        <p>Co-founds the Magdi Yacoub Heart Foundation and helps launch a specialist cardiac centre on the Nile in Aswan, Egypt.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2014</div>
+        <h3>Order of Merit</h3>
+        <p>Becomes the first Egyptian to receive the Order of Merit, one of the highest honours in the UK.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2025</div>
+        <h3>The "living valve"</h3>
+        <p>Unveils a biodegradable heart valve designed to integrate with the body and grow with a young patient over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <div class="wrap">
+    <blockquote>I am a very ordinary person</blockquote>
+    <cite>Sir Magdi Yacoub, speaking at the launch of his official biography, 2023</cite>
+  </div>
+</section>
+
+<section class="honors">
+  <div class="wrap">
+    <div class="section-head"><span class="idx">03</span><h2>Why it still matters</h2></div>
+    <div class="honors-grid">
+      <div class="honor-card">
+        <div class="num">01</div>
+        <p>He helped move heart transplantation in Britain from a rare, high-risk experiment to a routine, survivable operation — Harefield's survival rates became a benchmark for transplant centres worldwide.</p>
+      </div>
+      <div class="honor-card">
+        <div class="num">02</div>
+        <p>Techniques he developed or refined, including the arterial switch operation and the Ross-Yacoub valve repair, are still taught to cardiac surgery trainees today.</p>
+      </div>
+      <div class="honor-card">
+        <div class="num">03</div>
+        <p>Through Chain of Hope and the Aswan Heart Centre, his work reaches far beyond wealthy hospitals, bringing corrective heart surgery to children who would otherwise have no access to it.</p>
+      </div>
+    </div>
+    <p class="closing">Magdi Yacoub's story is really the story of a preventable death he refused to forget. <strong>Nearly seventy years after his aunt's death convinced him to study medicine</strong>, he is still trying to make sure other families never have to repeat it — one valve, one transplant, one child at a time.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Tribute page · researched from Wikipedia, Imperial College London, and NHS/Royal Brompton public statements. Written and paraphrased for this project — not copied from any source.</span>
+    <span>Heart image via Unsplash</span>
+  </div>
+</footer>
+
+</body>
+</html>
