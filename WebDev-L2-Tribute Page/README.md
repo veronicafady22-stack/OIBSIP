@@ -3,8 +3,8 @@
 **Task 2 · Tribute Page**
 A single-page tribute to Sir Magdi Yacoub, the Egyptian-British cardiothoracic surgeon who pioneered heart and heart-lung transplantation in the UK and later brought cardiac care to underserved parts of the world.
 
-## Live Demo
-Open `[magdi-yacoub-tribute.html](https://veronicafady22-stack.github.io/OIBSIP/WebDev-L2-Tribute%20Page/)` in any browser — no build step required.
+## Live Demo : https://veronicafady22-stack.github.io/OIBSIP/WebDev-L2-Tribute%20Page/
+Open in any browser — no build step required.
 
 ## Objective
 Design and build a visually engaging tribute page dedicated to a historical figure, scientist, artist, or public figure I admire, using semantic HTML5 and CSS3.
