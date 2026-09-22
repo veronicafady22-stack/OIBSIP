@@ -4,13 +4,12 @@ const themeToggle = document.getElementById('theme-toggle');
 
 const symbols = { '+': '+', '-': '−', '*': '×', '/': '÷' };
 
-let tokens = [];              // مثال: [5, '+', 3, '*']
-let currentInput = '0';       // الرقم اللي على الشاشة
-let shouldResetInput = false; // الرقم الجاي يبدأ من جديد؟
-let justEvaluated = false;    // لسه ضاغط =؟
-let finishedExpression = '';  // المعادلة بعد ما تدوس =
+let tokens = [];              
+let currentInput = '0';      
+let shouldResetInput = false; 
+let justEvaluated = false;    
+let finishedExpression = '';   
 
-/* ---------- العرض ---------- */
 
 function buildExpression() {
   const text = tokens.map((t) => symbols[t] || t).join(' ');
@@ -37,7 +36,6 @@ function showError() {
   updateDisplay();
 }
 
-/* ---------- الحساب ---------- */
 
 function calculate(a, b, operator) {
   let result;
@@ -46,18 +44,15 @@ function calculate(a, b, operator) {
     case '-': result = a - b; break;
     case '*': result = a * b; break;
     case '/':
-      if (b === 0) return null; // قسمة على صفر
+      if (b === 0) return null; 
       result = a / b;
       break;
   }
-  // عشان 0.1 + 0.2 ما تطلعش 0.30000000000000004
-  return parseFloat(result.toFixed(10));
+=  return parseFloat(result.toFixed(10));
 }
 
-// أولوية العمليات: × ÷ الأول، وبعدين + −
-function computeTokens(list) {
-  // المرور الأول: × و ÷
-  const stack = [list[0]];
+=function computeTokens(list) {
+=  const stack = [list[0]];
   for (let i = 1; i < list.length; i += 2) {
     const op = list[i];
     const next = list[i + 1];
@@ -72,7 +67,6 @@ function computeTokens(list) {
     }
   }
 
-  // المرور التاني: + و −
   let result = stack[0];
   for (let i = 1; i < stack.length; i += 2) {
     result = calculate(result, stack[i + 1], stack[i]);
@@ -80,7 +74,6 @@ function computeTokens(list) {
   return result;
 }
 
-/* ---------- الإدخال ---------- */
 
 function inputNumber(num) {
   if (currentInput === 'Error') clearAll();
@@ -95,7 +88,7 @@ function inputNumber(num) {
   }
 
   if (num === '.') {
-    if (currentInput.includes('.')) return; // نقطة واحدة بس
+    if (currentInput.includes('.')) return; 
     currentInput += '.';
   } else if (currentInput === '0') {
     currentInput = num;
@@ -108,7 +101,6 @@ function inputNumber(num) {
 function chooseOperator(op) {
   if (currentInput === 'Error') return;
 
-  // لو دوست عملية ورا عملية: بدّل العلامة بس
   const lastToken = tokens[tokens.length - 1];
   if (tokens.length > 0 && typeof lastToken === 'string' && shouldResetInput) {
     tokens[tokens.length - 1] = op;
@@ -152,7 +144,7 @@ function backspace() {
 
 function percent() {
   if (currentInput === 'Error') return;
-  if (shouldResetInput && !justEvaluated) return; // لسه ما كتبتش رقم
+  if (shouldResetInput && !justEvaluated) return; 
   const value = parseFloat(currentInput) / 100;
   currentInput = String(parseFloat(value.toFixed(10)));
   updateDisplay();
@@ -167,7 +159,6 @@ function toggleSign() {
   updateDisplay();
 }
 
-/* ---------- الأزرار ---------- */
 
 document.querySelectorAll('.btn').forEach((btn) => {
   btn.addEventListener('click', () => {
@@ -189,7 +180,6 @@ document.querySelectorAll('.btn').forEach((btn) => {
   });
 });
 
-/* ---------- الكيبورد ---------- */
 
 document.addEventListener('keydown', (e) => {
   const key = e.key;
@@ -202,7 +192,7 @@ document.addEventListener('keydown', (e) => {
   } else if (key === '%') {
     percent();
   } else if (key === 'Enter' || key === '=') {
-    e.preventDefault(); // عشان Enter ما يضغطش زرار متركّز عليه تاني
+    e.preventDefault(); 
     evaluate();
   } else if (key === 'Backspace') {
     backspace();
@@ -222,7 +212,6 @@ let savedTheme = 'dark';
 try {
   savedTheme = localStorage.getItem('calc-theme') || 'dark';
 } catch (err) {
-  // لو التخزين مش متاح، كمّل بالوضع الافتراضي
 }
 applyTheme(savedTheme);
 
@@ -232,7 +221,6 @@ themeToggle.addEventListener('click', () => {
   try {
     localStorage.setItem('calc-theme', next);
   } catch (err) {
-    // تجاهل
   }
 });
 
