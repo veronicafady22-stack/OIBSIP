@@ -2,6 +2,8 @@
 
 An interactive to-do list built with plain HTML5, CSS3, and vanilla JavaScript. Add tasks, mark them complete, edit them inline, and delete them. Tasks are split into **Pending** and **Completed** lists and saved in the browser, so they are still there after a page refresh.
 
+Live demo : https://veronicafady22-stack.github.io/OIBSIP/WebDev-L2-ToDoList/
+
 ## Features
 
 - Add new tasks with the input field and the **Add Task** button (or press Enter)
