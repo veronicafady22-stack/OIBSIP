@@ -1,7 +1,7 @@
 # Login Authentication System (Front-end, localStorage)
 
 A simple client-side authentication system built with HTML, CSS, and vanilla JavaScript (Approach A).
-
+Demo live :https://veronicafady22-stack.github.io/OIBSIP/WebDev-L2-Login%20Authentication%20System/register.html
 ## Features
 - Registration with username/email and password
 - Password rules: minimum 8 characters, at least 1 number
