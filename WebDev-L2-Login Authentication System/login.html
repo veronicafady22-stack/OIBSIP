@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Welcome back</h1>
+    <p class="sub">Log in to see your dashboard.</p>
+
+    <form id="login-form" novalidate>
+      <label for="username">Username or email</label>
+      <input id="username" type="text" autocomplete="username">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password">
+
+      <div id="message" class="msg" role="alert"></div>
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="switch">New here? <a href="register.html">Create an account</a></p>
+  </main>
+
+  <script src="auth.js"></script>
+  <script>
+    redirectIfLoggedIn();
+
+    const form = document.getElementById("login-form");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      // Basic form validation: no empty submissions
+      if (!username || !password) {
+        return showMessage(message, "Please fill in both fields.", "error");
+      }
+
+      try {
+        const user = getUsers()[normalise(username)];
+        let ok = false;
+        if (user) {
+          ok = (await hashPassword(password, user.salt)) === user.hash;
+        }
+        // One generic message for both "unknown user" and "wrong password",
+        // so the error never reveals which field was wrong.
+        if (!ok) {
+          return showMessage(message, "Incorrect username/email or password.", "error");
+        }
+        setSession(user.username);
+        window.location.href = "dashboard.html";
+      } catch (err) {
+        showMessage(message, "Login is not available in this browser. Try opening the page over https or localhost.", "error");
+      }
+    });
+  </script>
+</body>
+</html>

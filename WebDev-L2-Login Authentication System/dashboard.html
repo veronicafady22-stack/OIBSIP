@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<!-- Hidden until the session check passes, so protected content never flashes on screen -->
+<body class="hidden">
+  <main class="card">
+    <h1>Dashboard</h1>
+    <p class="sub">This page is only visible when you are logged in.</p>
+
+    <div class="info">
+      <div>Logged in as <strong id="who"></strong></div>
+      <div id="since"></div>
+    </div>
+
+    <button id="logout" class="outline" type="button">Logout</button>
+  </main>
+
+  <script src="auth.js"></script>
+  <script>
+    const session = requireLogin();
+    if (session) {
+      document.getElementById("who").textContent = session.username;
+      document.getElementById("since").textContent =
+        "Since " + new Date(session.loginAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+      document.body.classList.remove("hidden");
+
+      document.getElementById("logout").addEventListener("click", () => {
+        clearSession();
+        window.location.replace("login.html");
+      });
+    }
+  </script>
+</body>
+</html>

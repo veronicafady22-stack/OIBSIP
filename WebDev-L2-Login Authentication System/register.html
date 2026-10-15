@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Create account</h1>
+    <p class="sub">Sign up to access your dashboard.</p>
+
+    <form id="register-form" novalidate>
+      <label for="username">Username or email</label>
+      <input id="username" type="text" autocomplete="username">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="new-password">
+      <p class="hint">At least 8 characters, including 1 number.</p>
+
+      <div id="message" class="msg" role="alert"></div>
+      <button type="submit">Register</button>
+    </form>
+
+    <p class="switch">Already have an account? <a href="login.html">Log in</a></p>
+  </main>
+
+  <script src="auth.js"></script>
+  <script>
+    redirectIfLoggedIn();
+
+    const form = document.getElementById("register-form");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      // Basic form validation: no empty submissions
+      if (!username || !password) {
+        return showMessage(message, "Please fill in both fields.", "error");
+      }
+      // Password rules: min 8 characters, at least one number
+      if (password.length < 8) {
+        return showMessage(message, "Password must be at least 8 characters long.", "error");
+      }
+      if (!/\d/.test(password)) {
+        return showMessage(message, "Password must contain at least one number.", "error");
+      }
+      // Duplicate username/email check (case-insensitive)
+      const users = getUsers();
+      const key = normalise(username);
+      if (users[key]) {
+        return showMessage(message, "This username or email is already registered.", "error");
+      }
+
+      try {
+        const salt = randomSalt();
+        const hash = await hashPassword(password, salt);
+        users[key] = { username, salt, hash, createdAt: Date.now() };
+        saveUsers(users);
+        showMessage(message, "Account created! Redirecting to login...", "success");
+        setTimeout(() => window.location.href = "login.html", 1200);
+      } catch (err) {
+        showMessage(message, "Could not create the account in this browser. Try opening the page over https or localhost.", "error");
+      }
+    });
+  </script>
+</body>
+</html>
